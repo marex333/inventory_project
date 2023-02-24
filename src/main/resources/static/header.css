@@ -1,0 +1,12 @@
+#logo img {
+}
+body {
+        width: auto;
+        background: linear-gradient(0deg, rgba(28,44,55,1) 0%, rgba(255,255,255,1) 100%);
+        background-attachment: fixed;
+        background-image: url("bottles_template_background3.png");
+}
+#background {
+    opacity: 0.2;
+}
+
