@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+    <div th:replace="~{fragments.html :: logo}"></div>
+    <div th:replace="~{fragments.html :: logo_title}"></div>
+
+    <a href="/login" class="button">Zaloguj</a>
+    <a href="/register" class="button">Zarejestruj</a>
+    <a href="/about" class="button">O programie</a>
+    <a href="/demo" class="button">Wersja demonstracyjna</a>
+
+    <form method="post" id="form">
+        <input type="text" placeholder="Login" name="login" class="text-input">
+        <input type="password" placeholder="Password" name="password" class="text-input">
+        <input type="submit" value="OK" class="button">
+    </form>
+</body>
+</html>

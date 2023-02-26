@@ -14,4 +14,17 @@ public class CommonController {
     public String main1() {
         return "main";
     }
+    @RequestMapping(path = "/register", method = RequestMethod.GET)
+    public String register (){
+        return "register";
+    }
+    @RequestMapping(path = "/demo", method = RequestMethod.GET)
+    public String demo() {
+        return "demo";
+    }
+    @RequestMapping(path = "/about", method = RequestMethod.GET)
+    public String about() {
+        return "about";
+    }
+
 }

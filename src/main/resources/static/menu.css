@@ -1,0 +1,30 @@
+.menu {
+    display: block;
+    text-align: center;
+    margin: auto;
+}
+.button {
+    display: inherit;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    width: 275px;
+    border: 2px solid;
+    border-radius: 10px;
+    margin: 4px auto;
+    background-color: #754785;
+    opacity: 0.8;
+    font-size: 25px;
+
+    transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    -ms-transition: all 0.4s;
+
+}
+.button:hover {
+    background-color: #dd6000;
+     transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    -ms-transition: all 0.4s;
+    cursor: pointer;
+}
