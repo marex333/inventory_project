@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>AlcoManager Main Page</title>
-    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="common.css">
     <link rel="stylesheet" href="menu.css">
 </head>
 <body>
-    <div th:replace="~{fragments.html :: logo}"></div>
-    <div th:replace="~{fragments.html :: logo_title}"></div>
-    <div th:replace="~{fragments.html :: loggedInfo}"></div>
+    <div class="header">
+        <div th:replace="~{fragments.html :: logo}"></div>
+        <div th:replace="~{fragments.html :: loggedInfo}"></div>
+    </div>
     <div class="menu">
-        <a href="/login" class="button">Zaloguj</a>
-        <a href="/register" class="button">Zarejestruj</a>
+        <a th:if="${!sessionObject.isLogged()}" href="/login" class="button">Zaloguj</a>
+        <a th:if="${!sessionObject.isLogged()}" href="/register" class="button">Zarejestruj</a>
         <a href="/about" class="button">O programie</a>
-        <a href="/demo" class="button">Wersja demonstracyjna</a>
+        <a th:if="${!sessionObject.isDemo() && !sessionObject.isLogged()}" href="/demo" class="button">Wersja demonstracyjna</a>
     </div>
 </body>
 </html>

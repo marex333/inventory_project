@@ -36,7 +36,7 @@ public class AuthenticatorService implements IAuthenticatorService {
 
     @Override
     public void logout() {
-
+        this.sessionObject.setUser(null);
     }
 
     @Override

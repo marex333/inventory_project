@@ -19,13 +19,23 @@ public class UserAuthenticatorController {
     @RequestMapping(path = "/login", method = RequestMethod.GET)
     public String login(Model model) {
         model.addAttribute("sessionObject", this.sessionObject);
-        return "/login";
+        return this.sessionObject.isLogged() ? "redirect:/main" : "login";
     }
 
     @RequestMapping(path = "/login", method = RequestMethod.POST)
     public String login(@RequestParam String login,
                         @RequestParam String password) {
         authenticatorService.authenticate(login, password);
-        return "redirect:/login";
+        return sessionObject.isLogged() ? "redirect:/main" : "redirect:/login";
+    }
+    @RequestMapping(path = "/logout", method = RequestMethod.GET)
+    public String logout() {
+        authenticatorService.logout();
+        return "redirect:/main";
+    }
+    @RequestMapping(path = "/demo", method = RequestMethod.GET)
+    public String demo() {
+        authenticatorService.authenticate("demo","demo");
+        return "redirect:/main";
     }
 }

@@ -5,14 +5,22 @@
     <title>main</title>
 </head>
 <body>
-    <div id="logo" th:fragment="logo">
-        <img src="inventory_logo.png">
-    </div>
-    <div id="logo_title" th:fragment="logo_title">
-        <img src="alcomanager_text.png">
-    </div>
-    <div id="loggedInfo" th:fragment="loggedInfo">
+        <div th:fragment="logo" class="logo>">
+            <a href="/main">
+            <div th:fragment="logo_img" id="logo_img" >
+
+                <img src="inventory_logo.png">
+            </div>
+            <div th:fragment="logo_title" id="logo_title" >
+                <img src="alcomanager_text.png">
+
+            </div>
+            </a>
+        </div>
+    <div th:fragment="loggedInfo" id="loggedInfo">
         <img src="logged_icon.jpg">
+        <div th:text="${sessionObject.getUserName}" id="loggedInfo_name"></div>
+        <a th:if="${sessionObject.isLogged()}" href="/logout" class="button" id="bt_logout">Log Out</a>
     </div>
 </body>
 </html>

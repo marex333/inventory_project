@@ -12,6 +12,12 @@ public class SessionObject {
     public User getUser() {
         return user;
     }
+    public String getUserName() {
+        if (this.user != null) {
+            return this.user.getFirstName() + " " + this.user.getLastName();
+        }
+        return "not logged";
+    }
 
     public void setUser(User user) {
         this.user = user;
@@ -22,5 +28,8 @@ public class SessionObject {
     }
     public boolean isAdmin() {
         return this.user != null && user.getRole() == User.Role.ADMIN;
+    }
+    public boolean isDemo() {
+        return this.user != null && user.getRole() == User.Role.DEMO;
     }
 }
