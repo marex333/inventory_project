@@ -70,10 +70,48 @@ public class User {
     public Role getRole() {
         return role;
     }
-
     public enum Role {
         ADMIN,
         USER,
         DEMO
+    }
+    public static class UserBuilder {
+        User user = new User();
+        public UserBuilder id(int id) {
+            this.user.setId(id);
+            return this;
+        }
+        public UserBuilder login(String login) {
+            this.user.setLogin(login);
+            return this;
+        }
+        public UserBuilder password(String password) {
+            this.user.setPassword(password);
+            return this;
+        }
+        public UserBuilder firstName(String firstName) {
+            this.user.setFirstName(firstName);
+            return this;
+        }
+        public UserBuilder lastName(String lastName) {
+            this.user.setLastName(lastName);
+            return this;
+        }
+        public UserBuilder role(Role role) {
+            this.user.setRole(role);
+            return this;
+        }
+        public User build() {
+            return user;
+        }
+        public UserBuilder clone(User user) {
+            id(user.getId()).
+                    login(user.getLogin()).
+                    password(user.getPassword()).
+                    firstName(user.getFirstName()).
+                    lastName(user.getLastName()).
+                    role(user.getRole());
+            return this;
+        }
     }
 }

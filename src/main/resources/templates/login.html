@@ -10,9 +10,10 @@
 <body>
     <div th:replace="~{fragments.html :: logo}"></div>
     <div th:replace="~{fragments.html :: logo_title}"></div>
+    <div th:replace="~{fragments.html :: loggedInfo}"></div>
 
-    <a href="/login" class="button">Zaloguj</a>
-    <a href="/register" class="button">Zarejestruj</a>
+    <a th:if="${!sessionObject.isLogged()}" href="/login" class="button">Zaloguj</a>
+    <a th:if="${!sessionObject.isLogged()}" href="/register" class="button">Zarejestruj</a>
     <a href="/about" class="button">O programie</a>
     <a href="/demo" class="button">Wersja demonstracyjna</a>
 
