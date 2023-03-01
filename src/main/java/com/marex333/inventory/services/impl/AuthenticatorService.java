@@ -1,12 +1,11 @@
 package com.marex333.inventory.services.impl;
 
 import com.marex333.inventory.database.IUserDAO;
-import com.marex333.inventory.exceptions.AuthenticationException;
+import com.marex333.inventory.exceptions.UserPersistException;
 import com.marex333.inventory.model.User;
 import com.marex333.inventory.services.IAuthenticatorService;
 import com.marex333.inventory.session.SessionObject;
 import jakarta.annotation.Resource;
-import org.apache.commons.codec.cli.Digest;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,8 +39,14 @@ public class AuthenticatorService implements IAuthenticatorService {
     }
 
     @Override
-    public void registerUser(User user) {
+    public void persist(User user, String password2) {
+        System.out.println("tworzę użytkownika");
+        if (!user.getPassword().equals(password2)) {
+            System.out.println("password nie pasuje");
+            throw new UserPersistException();
+        }
         user.setRole(User.Role.USER);
-        iUserDAO.persistUser(user);
+        iUserDAO.persistUser(new User.UserBuilder().clone(user).build());
+        user = null;
     }
 }

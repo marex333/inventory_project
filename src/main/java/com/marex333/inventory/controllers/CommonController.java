@@ -23,11 +23,6 @@ public class CommonController {
         model.addAttribute("sessionObject", sessionObject);
         return "main";
     }
-    @RequestMapping(path = "/register", method = RequestMethod.GET)
-    public String register (){
-        return "register";
-    }
-
     @RequestMapping(path = "/about", method = RequestMethod.GET)
     public String about(Model model) {
         model.addAttribute("sessionObject", sessionObject);

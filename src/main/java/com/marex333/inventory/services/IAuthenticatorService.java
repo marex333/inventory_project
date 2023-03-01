@@ -5,5 +5,5 @@ import com.marex333.inventory.model.User;
 public interface IAuthenticatorService {
     void authenticate(String login, String password);
     void logout();
-    void registerUser(User user);
+    void persist(User user, String password2);
 }

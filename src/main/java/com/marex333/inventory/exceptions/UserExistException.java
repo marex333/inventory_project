@@ -1,4 +1,4 @@
 package com.marex333.inventory.exceptions;
 
-public class UserExistException extends RuntimeException{
+public class UserExistException extends UserPersistException {
 }

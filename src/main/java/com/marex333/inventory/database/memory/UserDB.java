@@ -5,6 +5,7 @@ import com.marex333.inventory.database.sequence.IIdSequence;
 import com.marex333.inventory.database.sequence.IUserIdSequence;
 import com.marex333.inventory.exceptions.UserExistException;
 import com.marex333.inventory.model.User;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -36,7 +37,7 @@ public class UserDB implements IUserDAO {
             throw new UserExistException();
         } else {
             user.setId(userIdSequence.getId());
-            //user.setPassword(DigestUtils.md5Hex(user.getPassword()));   To już robię w service
+            user.setPassword(DigestUtils.md5Hex(user.getPassword()));
             users.add(user);
         }
     }

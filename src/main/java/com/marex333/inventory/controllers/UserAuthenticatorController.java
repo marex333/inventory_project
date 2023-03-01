@@ -1,11 +1,14 @@
 package com.marex333.inventory.controllers;
 
+import com.marex333.inventory.exceptions.UserPersistException;
+import com.marex333.inventory.model.User;
 import com.marex333.inventory.services.IAuthenticatorService;
 import com.marex333.inventory.session.SessionObject;
 import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,6 +36,22 @@ public class UserAuthenticatorController {
         authenticatorService.logout();
         return "redirect:/main";
     }
+    @RequestMapping(path = "/register", method = RequestMethod.GET)
+    public String register (Model model){
+        model.addAttribute("user", new User());
+        return "register";
+    }
+    @RequestMapping(path = "/register", method = RequestMethod.POST)
+    public String register (@ModelAttribute User user, String password2){
+        try {
+            authenticatorService.persist(user, password2);
+        } catch (UserPersistException e) {
+            System.out.println("User Persist Exception");
+            return "redirect:/register";
+        }
+        return "redirect:/main";
+    }
+
     @RequestMapping(path = "/demo", method = RequestMethod.GET)
     public String demo() {
         authenticatorService.authenticate("demo","demo");
