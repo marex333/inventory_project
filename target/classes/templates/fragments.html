@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>main</title>
+</head>
+<body>
+        <div th:fragment="logo" class="logo>">
+            <div th:fragment="logo_img" id="logo_img">
+                <a href="/main">
+                    <img src="inventory_logo.png">
+                </a>
+            </div>
+            <div th:fragment="logo_title" id="logo_title" >
+                <a href="/main">
+                  <img src="alcomanager_text.png">
+                </a>
+            </div>
+        </div>
+    <div th:fragment="loggedInfo" id="loggedInfo">
+        <img src="logged_icon.jpg">
+        <div th:text="${sessionObject.getUserName}" id="loggedInfo_name"></div>
+        <a th:if="${sessionObject.isLogged()}" href="/logout" class="button" id="bt_logout">Log Out</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+    <div class="header">
+        <div th:replace="~{fragments.html :: logo}"></div>
+    </div>
+    <form method="post" id="form">
+        <input type="text" placeholder="First Name" name="firstName" class="text-input" th:field="*{user.firstName}">
+        <input type="text" placeholder="LastName" name="lastName" class="text-input"th:field="*{user.lastName}">
+        <input type="text" placeholder="Login" name="login" class="text-input"th:field="*{user.login}">
+        <input type="password" placeholder="Password" name="password" class="text-input"th:field="*{user.password}">
+        <input type="password" placeholder="Repeat Password" name="password2" class="text-input">
+        <input type="submit" value="OK" class="button">
+    </form>
+</body>
+</html>
