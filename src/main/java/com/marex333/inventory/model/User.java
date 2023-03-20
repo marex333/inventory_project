@@ -1,4 +1,8 @@
 package com.marex333.inventory.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
     private int id;
     private String login;
@@ -7,6 +11,16 @@ public class User {
     private String lastName;
     private Role role;
 
+    public List<Alcohol> getAlcoholList() {
+        return alcoholList;
+    }
+
+    public void setAlcoholList(List<Alcohol> alcoholList) {
+        this.alcoholList = alcoholList;
+    }
+
+    private List<Alcohol> alcoholList;
+
     public User(int id, String login, String password, String firstName, String lastName, Role role) {
         this.id = id;
         this.login = login;
@@ -14,9 +28,11 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.role = role;
+        alcoholList = new ArrayList();
     }
 
     public User() {
+        alcoholList = new ArrayList();
     }
 
     public int getId() {

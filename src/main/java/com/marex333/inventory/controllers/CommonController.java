@@ -28,5 +28,9 @@ public class CommonController {
         model.addAttribute("sessionObject", sessionObject);
         return "about";
     }
-
+    @RequestMapping(path = "/test", method = RequestMethod.GET)
+    public String test(Model model) {
+        model.addAttribute("sessionObject", sessionObject);
+        return "test";
+    }
 }

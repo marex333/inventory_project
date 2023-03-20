@@ -17,7 +17,6 @@ import java.util.Optional;
 public class UserDB implements IUserDAO {
     private final List<User> users = new ArrayList<>();
     private final IIdSequence userIdSequence;
-
     public UserDB(@Autowired IUserIdSequence userIdSequence) {
         this.userIdSequence = userIdSequence;
         users.add(new User(this.userIdSequence.getId(),"admin", "21232f297a57a5a743894a0e4a801fc3", "Dawid", "Maroń", User.Role.ADMIN));
@@ -28,6 +27,11 @@ public class UserDB implements IUserDAO {
     @Override
     public Optional<User> getUserByLogin(final String login) {
         return this.users.stream().filter(u -> u.getLogin().equals(login)).findFirst();
+    }
+
+    @Override
+    public List<User> getUsers() {
+        return users;
     }
 
     @Override

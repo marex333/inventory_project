@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+    <div class="header">
+        <div th:replace="~{fragments.html :: logo}"></div>
+        <div th:replace="~{fragments.html :: loggedInfo}"></div>
+    </div>
+    <div id="table-container" >
+        <table style="width:90%" class="table">
+            <tr name="alco">
+                <td>Brand Name</td>
+                <td>0.50</td>
+                <td>0.70</td>
+                <td>0.75</td>
+                <td>1.00</td>
+                <td>1.50</td>
+                <td>3.00</td>
+
+            </tr>
+            <tr name="alco">
+                <td>Campari</td>
+                <td>0</td>
+                <td>3</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>1</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

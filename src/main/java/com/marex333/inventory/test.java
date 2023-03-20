@@ -1,11 +1,13 @@
 package com.marex333.inventory;
 
-import org.apache.commons.codec.digest.DigestUtils;
+import com.marex333.inventory.database.memory.UserDB;
+import com.marex333.inventory.database.sequence.UserIdSequence;
+import com.marex333.inventory.model.User;
+
+import java.util.ArrayList;
 
 public class test {
     public static void main(String[] args) {
-        System.out.println(DigestUtils.md5Hex("admin"));
-        System.out.println(DigestUtils.md5Hex("user"));
-        System.out.println(DigestUtils.md5Hex("demo"));
 
-}}
+    }
+}

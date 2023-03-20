@@ -1,38 +1,39 @@
 package com.marex333.inventory.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Optional;
+import java.util.List;
 
 // size in millilitres
 // weight in grams
 public class Alcohol {
     private int id;
     private String name;
-    private double totalAlcohol;
+    private double totalAlcohol = initializeTotalAlcohol();
     private double alcoholWeight;
     private boolean isAlcoholPresentInAccount = false;
-    private ArrayList<Bottle> listOfBottles;
+    private List<Bottle> listOfBottles;
 
-
-    // Constructor for bottles to determine weight
-    public Alcohol(String name, Bottle... bottles) {
+    public Alcohol(){}
+    // Constructor determine alcoholWeight as TARE of Bottle. Bottle need empty + full weights!
+    public Alcohol(String name, Bottle... bottles){
         this.name = name;
-        this.totalAlcohol = 0;
-        this.listOfBottles = (ArrayList<Bottle>) Arrays.stream(bottles).toList();
-        this.alcoholWeight = Arrays.stream(bottles).findFirst().orElse(new Bottle()).getAlcoholWeight();
+        listOfBottles = new ArrayList<>(List.of(bottles));
+        this.alcoholWeight = bottles[0].calculateAlcoholWeight();
     }
-    public Alcohol() {
-
+    // Constructor takes alcoholWeight from argument.
+    public Alcohol(String name, double alcoholWeight, Bottle... bottles) {
+        this.name = name;
+        this.alcoholWeight = alcoholWeight;
+        this.listOfBottles = new ArrayList<>(List.of(bottles));
     }
 
-    public void initializeTotalAlcohol() {
-        double alco = 0;
+    private double initializeTotalAlcohol() {
+        double total = 0;
         for (Bottle bottle : this.listOfBottles) {
-            alco += bottle.getSize() * bottle.quantityOfFull;
-            alco += bottle.getVolumeOfOpen();
+            total += bottle.getSize() * bottle.quantityOfFull;
+            total += bottle.getVolumeOfOpen();
         }
-
+        return total;
     }
     public int getId() {
         return id;
@@ -50,7 +51,7 @@ public class Alcohol {
         this.name = name;
     }
 
-    public ArrayList<Bottle> getListOfBottles() {
+    public List<Bottle> getListOfBottles() {
         return listOfBottles;
     }
 
@@ -77,6 +78,14 @@ public class Alcohol {
     public void setAlcoholPresentInAccount(boolean alcoholPresentInAccount) {
         isAlcoholPresentInAccount = alcoholPresentInAccount;
     }
+    public String toString() {
+        return "id: " + this.id +
+                "\nname: " + this.name +
+                "\ntotal alcohol: " + this.totalAlcohol +
+                "\nalco weight: " + this.alcoholWeight +
+                "\nisAlcoholPresentInAccount: " + this.isAlcoholPresentInAccount +
+                "\nList of Bottles: " + this.listOfBottles;
+    }
     public static class AlcoholBuilder {
         Alcohol alcohol = new Alcohol();
         public AlcoholBuilder name(String name) {
@@ -102,16 +111,20 @@ public class Alcohol {
             this.volumeOfOpen = 0;
         }
         public Bottle(Size size, double emptyWeight, double fullWeight, double capWeight) {
+            this(size, emptyWeight, fullWeight, capWeight, 0, 0);
+        }
+        public Bottle(Size size, double emptyWeight, double fullWeight, double capWeight, int quantityOfFull, double volumeOfOpen){
             this.size = size.getSize();
             this.emptyWeight = emptyWeight;
             this.fullWeight = fullWeight;
             this.capWeight = capWeight;
-            this.quantityOfFull = 0;
-            this.volumeOfOpen = 0;
+            this.quantityOfFull = quantityOfFull;
+            this.volumeOfOpen = volumeOfOpen;
+
         }
 
         // size / (gross - tare)
-        public double getAlcoholWeight() {
+        public double calculateAlcoholWeight() {
             return this.size / (this.fullWeight - this.emptyWeight);
         }
 

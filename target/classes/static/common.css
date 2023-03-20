@@ -98,3 +98,10 @@ body {
 #bt_logout:hover {
     background-color: #EE0000;
 }
+.table {
+    font-weight: bold;
+    background: rgba(0, 0, 0, .3);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
