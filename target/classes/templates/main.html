@@ -17,5 +17,24 @@
         <a href="/about" class="button">O programie</a>
         <a th:if="${!sessionObject.isDemo() && !sessionObject.isLogged()}" href="/demo" class="button">Wersja demonstracyjna</a>
     </div>
+    <div id="container" >
+        <table th:if="${sessionObject.isLogged()}" class="table">
+            <tr class="table_row" id="headerRow">
+                <th>ID</th>
+                <th>NAME</th>
+                <th>BRAND</th>
+                <th>0.7</th>
+                <th>0.5</th>
+            </tr>
+            <tr th:each="alcohol : ${alcohols}" class="table_row">
+                <td th:text="${alcohol.id}"></td>
+                <td th:text="${alcohol.name}">NAME</td>
+                <td th:text="${alcohol.id}">BRAND</td>
+                <td th:text="${alcohol.Id}">0.7</td>
+                <td th:text="${alcohol.Name}">0.5</td>
+            </tr>
+        </table>
+    </div>
+
 </body>
 </html>

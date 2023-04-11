@@ -4,6 +4,8 @@ import com.marex333.inventory.database.IAlcoholDAO;
 import com.marex333.inventory.database.sequence.AlcoholIdSequence;
 import com.marex333.inventory.database.sequence.IAlcoholIdSequence;
 import com.marex333.inventory.model.Alcohol;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -12,7 +14,7 @@ public class AlcoholDB implements IAlcoholDAO {
     final private List<Alcohol> alcoholList = new ArrayList<>();
     final private IAlcoholIdSequence alcoholIdSequence;
 
-    public AlcoholDB() {
+    public AlcoholDB(@Autowired IAlcoholIdSequence alcoholIdSequence) {
         this.alcoholIdSequence = new AlcoholIdSequence();
         alcoholList.add(new Alcohol("Campari", new Alcohol.Bottle(Alcohol.Size.ml700, 463, 1195, 2, 3, 500)));
         alcoholList.add(new Alcohol("Aperol", new Alcohol.Bottle(Alcohol.Size.ml700, 535, 1281, 2)));

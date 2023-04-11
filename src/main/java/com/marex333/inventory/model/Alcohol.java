@@ -29,6 +29,9 @@ public class Alcohol {
 
     private double initializeTotalAlcohol() {
         double total = 0;
+        if (listOfBottles == null) {
+            listOfBottles = new ArrayList<>();
+        }
         for (Bottle bottle : this.listOfBottles) {
             total += bottle.getSize() * bottle.quantityOfFull;
             total += bottle.getVolumeOfOpen();

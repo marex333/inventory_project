@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="menu.css">
 </head>
 <body>
-    <div th:replace="~{fragments.html :: logo}"></div>
-    <div th:replace="~{fragments.html :: loggedInfo}"></div>
+    <div class="header">
+        <div th:replace="~{fragments.html :: logo}"></div>
+        <div th:replace="~{fragments.html :: loggedInfo}"></div>
+    </div>
 </body>
 </html>

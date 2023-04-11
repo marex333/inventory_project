@@ -30,6 +30,12 @@ public class User {
         this.role = role;
         alcoholList = new ArrayList();
     }
+    public void setDefaultAlcohols() {
+        alcoholList.add(new Alcohol("Campari", new Alcohol.Bottle(Alcohol.Size.ml700, 463, 1195, 2, 3, 500)));
+        alcoholList.add(new Alcohol("Aperol", new Alcohol.Bottle(Alcohol.Size.ml700, 535, 1281, 2)));
+        alcoholList.add(new Alcohol("Fernet", new Alcohol.Bottle(Alcohol.Size.ml700, 480, 1140, 2)));
+        alcoholList.add(new Alcohol("Tia Maria", new Alcohol.Bottle(Alcohol.Size.ml1000, 702, 1778, 2)));
+    }
 
     public User() {
         alcoholList = new ArrayList();
